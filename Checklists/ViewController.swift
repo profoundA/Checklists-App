@@ -10,9 +10,6 @@ import UIKit
 class ViewController: UIViewController {
     
     
-    var a = 10
-    var b = 15
-    
     
 
     override func viewDidLoad() {
