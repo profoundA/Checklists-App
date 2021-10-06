@@ -8,6 +8,8 @@
 import Foundation
 
 
+//MARK: Data model
+
 class ChecklistItem {
     var text = ""
     var checked = false
