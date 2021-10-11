@@ -21,10 +21,10 @@ class ChecklistViewController: UITableViewController {
     
     func configureText(for cell: UITableViewCell, with item: ChecklistItem) {
         let label = cell.viewWithTag(1) as! UILabel
-        label.text = item.text
-        
+        label.text = item.text 
     }
     
+    func numberReturn(_ num: Int) -> Int { num * 2 }
     
     @IBAction func addItem() {
         let newRowIndex = items.count
