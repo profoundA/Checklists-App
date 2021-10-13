@@ -24,21 +24,6 @@ class ChecklistViewController: UITableViewController {
         label.text = item.text 
     }
     
-    func numberReturn(_ num: Int) -> Int { num * 2 }
-    
-    @IBAction func addItem() {
-        let newRowIndex = items.count
-        
-        let item = ChecklistItem()
-        item.text = "I'm a new row"
-        items.append(item)
-        
-        let indexPath = IndexPath(row: newRowIndex, section: 0)
-        let indexPaths = [indexPath]
-        tableView.insertRows(at: indexPaths, with: .automatic)
-    }
-    
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -68,6 +53,14 @@ class ChecklistViewController: UITableViewController {
         items.append(item6)
     }
     
+    //MARK: - Navigation
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "AddItem" {
+            let controller = segue.destination as! AddItemViewController
+            controller.delegate = self
+        }
+    }
     
     //MARK: - TableView Delegate
     
@@ -112,3 +105,22 @@ class ChecklistViewController: UITableViewController {
     }
 }
 
+//MARK: - AddItem Delegate extension
+
+extension ChecklistViewController: AddItemViewControllerDelegate {
+    
+    func addItemViewControlledDidCancel(_ controller: AddItemViewController) {
+        navigationController?.popViewController(animated: true)
+    }
+    
+    func addItemViewController(_ controller: AddItemViewController, didFinishAdding item: ChecklistItem) {
+        let newRowIndex = items.count
+        items.append(item)
+        
+        let indexPath = IndexPath(row: newRowIndex, section: 0)
+        let indexPaths = [indexPath]
+        tableView.insertRows(at: indexPaths, with: .automatic)
+        
+        navigationController?.popViewController(animated: true)
+    }
+}

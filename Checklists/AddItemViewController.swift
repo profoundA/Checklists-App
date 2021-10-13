@@ -7,7 +7,12 @@
 
 import UIKit
 
-class AddItemViewController: UITableViewController, UITextFieldDelegate {
+protocol AddItemViewControllerDelegate: AnyObject {
+    func addItemViewControlledDidCancel(_ controller: AddItemViewController)
+    func addItemViewController(_ controller: AddItemViewController, didFinishAdding item: ChecklistItem)
+}
+
+class AddItemViewController: UITableViewController {
     
 
     override func viewDidLoad() {
@@ -27,26 +32,34 @@ class AddItemViewController: UITableViewController, UITextFieldDelegate {
     
     @IBOutlet weak var textField: UITextField!
     
+    //MARK: - Delegate reference
+    
+    weak var delegate: AddItemViewControllerDelegate?
+    
     //MARK: - Actions
     
     @IBAction func cancel() {
-        navigationController?.popViewController(animated: true)
+        delegate?.addItemViewControlledDidCancel(self)
     }
    
     @IBAction func done() {
+        let item = ChecklistItem()
+        item.text = textField.text ?? ""
         
-        print("context of tf is \(textField.text!)")
-        navigationController?.popViewController(animated: true)
+        
+        delegate?.addItemViewController(self, didFinishAdding: item)
     }
-    
     
     //MARK: - TableView Delegate
     
     override func tableView(_ tableView: UITableView, willSelectRowAt indexPath: IndexPath) -> IndexPath? {
         return nil
     }
-    
-    //MARK: - TextField Delegate
+}
+
+//MARK: - TextField Delegate extension
+
+extension AddItemViewController: UITextFieldDelegate {
     
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         let oldText = textField.text!
@@ -65,3 +78,4 @@ class AddItemViewController: UITableViewController, UITextFieldDelegate {
         return true
     }
 }
+
