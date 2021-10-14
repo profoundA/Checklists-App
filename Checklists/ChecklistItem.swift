@@ -10,7 +10,7 @@ import Foundation
 
 //MARK: - Data model
 
-class ChecklistItem {
+class ChecklistItem: NSObject {
     var text = ""
     var checked = false
 }
