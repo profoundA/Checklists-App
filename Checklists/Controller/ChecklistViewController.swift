@@ -9,6 +9,8 @@ import UIKit
 
 class ChecklistViewController: UITableViewController {
     
+    var checklist: Checklist!
+    
     var items = [ChecklistItem]()
     
    
@@ -37,6 +39,8 @@ class ChecklistViewController: UITableViewController {
         items.append(item1)
       
         loadCheckListItems()
+        
+        title = checklist.name
     }
     
     //MARK: - Persistance
