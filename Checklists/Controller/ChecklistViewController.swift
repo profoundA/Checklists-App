@@ -138,7 +138,7 @@ class ChecklistViewController: UITableViewController {
     }
 }
 
-//MARK: - AddItem Delegate extension
+//MARK: - AddItem Delegate 
 
 extension ChecklistViewController: ItemDetailViewControllerDelegate {
     
