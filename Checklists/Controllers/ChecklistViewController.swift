@@ -12,8 +12,8 @@ class ChecklistViewController: UITableViewController {
     var checklist: Checklist!
     
     func configureCheckmark(for cell: UITableViewCell, with item: ChecklistItem) {
-        let label = cell.viewWithTag(2)
         
+        let label = cell.viewWithTag(2)
         if item.checked {
             label?.isHidden = false
         } else {

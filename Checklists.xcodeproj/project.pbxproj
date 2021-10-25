@@ -70,17 +70,14 @@
 			children = (
 				32D10AB52706959E00E40593 /* AppDelegate.swift */,
 				32D10AB72706959E00E40593 /* SceneDelegate.swift */,
-				32E9CDAF2721DD0100A0F9D9 /* Model */,
-				32E9CDAE2721DCEA00A0F9D9 /* Controller */,
-				32D10ABB2706959E00E40593 /* Main.storyboard */,
-				32D10ABE270695A000E40593 /* Assets.xcassets */,
-				32D10AC0270695A000E40593 /* LaunchScreen.storyboard */,
-				32D10AC3270695A000E40593 /* Info.plist */,
+				32E9CDAF2721DD0100A0F9D9 /* Models */,
+				32E9CDAE2721DCEA00A0F9D9 /* Controllers */,
+				32E9CDB427271C8100A0F9D9 /* Resources */,
 			);
 			path = Checklists;
 			sourceTree = "<group>";
 		};
-		32E9CDAE2721DCEA00A0F9D9 /* Controller */ = {
+		32E9CDAE2721DCEA00A0F9D9 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
 				32D10AB92706959E00E40593 /* ChecklistViewController.swift */,
@@ -88,17 +85,28 @@
 				32E9CDAC2721DC9F00A0F9D9 /* ListDetailViewController.swift */,
 				32E9CDA8271F04EE00A0F9D9 /* AllListsViewController.swift */,
 			);
-			path = Controller;
+			path = Controllers;
 			sourceTree = "<group>";
 		};
-		32E9CDAF2721DD0100A0F9D9 /* Model */ = {
+		32E9CDAF2721DD0100A0F9D9 /* Models */ = {
 			isa = PBXGroup;
 			children = (
 				32E9CDAA271F06E200A0F9D9 /* Checklist.swift */,
 				320B22F8270E3A0B0026E845 /* ChecklistItem.swift */,
 				32E9CDB22722D22600A0F9D9 /* DataModel.swift */,
 			);
-			path = Model;
+			path = Models;
+			sourceTree = "<group>";
+		};
+		32E9CDB427271C8100A0F9D9 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				32D10AC3270695A000E40593 /* Info.plist */,
+				32D10ABE270695A000E40593 /* Assets.xcassets */,
+				32D10AC0270695A000E40593 /* LaunchScreen.storyboard */,
+				32D10ABB2706959E00E40593 /* Main.storyboard */,
+			);
+			path = Resources;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -332,7 +340,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = U39WF44945;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = Checklists/Info.plist;
+				INFOPLIST_FILE = Checklists/Resources/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -361,7 +369,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = U39WF44945;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = Checklists/Info.plist;
+				INFOPLIST_FILE = Checklists/Resources/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
