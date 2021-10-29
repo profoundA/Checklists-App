@@ -26,6 +26,12 @@ class DataModel {
         handleFirstTime()
     }
     
+    func sortChecklists() {
+        lists.sort { list1, list2 in
+            return list1.name.localizedStandardCompare(list2.name) == .orderedAscending
+        }
+    }
+    
     //MARK: - Data saving
     
     func documentsDirectory() -> URL {
