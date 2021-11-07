@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19162" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="EHn-FA-RRI">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19455" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="EHn-FA-RRI">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19144"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19454"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -219,6 +219,45 @@
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
+                            <tableViewSection id="Pjm-eO-Teq">
+                                <cells>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" id="kMc-mQ-c6P">
+                                        <rect key="frame" x="0.0" y="97.5" width="414" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="kMc-mQ-c6P" id="Hf0-5g-cID">
+                                            <rect key="frame" x="0.0" y="0.0" width="384.5" height="44"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Icon" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="egi-1Q-bdv">
+                                                    <rect key="frame" x="20" y="11" width="33" height="22.5"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="9ki-l2-2Vu">
+                                                    <rect key="frame" x="340" y="4" width="36" height="36.5"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="36" id="3uc-TO-fh2"/>
+                                                        <constraint firstAttribute="height" constant="36" id="ifc-XJ-EXJ"/>
+                                                    </constraints>
+                                                </imageView>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="egi-1Q-bdv" firstAttribute="leading" secondItem="Hf0-5g-cID" secondAttribute="leadingMargin" id="3HA-6v-Qiq"/>
+                                                <constraint firstItem="egi-1Q-bdv" firstAttribute="top" secondItem="Hf0-5g-cID" secondAttribute="topMargin" id="3lH-Qa-aUx"/>
+                                                <constraint firstAttribute="trailing" secondItem="9ki-l2-2Vu" secondAttribute="trailing" constant="8.5" id="OEK-Q7-ZOg"/>
+                                                <constraint firstItem="9ki-l2-2Vu" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="egi-1Q-bdv" secondAttribute="trailing" constant="8" symbolic="YES" id="Wgf-QU-iIc"/>
+                                                <constraint firstItem="9ki-l2-2Vu" firstAttribute="top" secondItem="Hf0-5g-cID" secondAttribute="top" constant="4" id="Xr5-uK-qGy"/>
+                                                <constraint firstAttribute="bottom" secondItem="9ki-l2-2Vu" secondAttribute="bottom" constant="3.5" id="emP-t4-PSX"/>
+                                                <constraint firstItem="egi-1Q-bdv" firstAttribute="centerY" secondItem="9ki-l2-2Vu" secondAttribute="centerY" id="gDt-g6-OeE"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <segue destination="VmN-sH-6lz" kind="show" identifier="PickIcon" id="u5a-KU-whb"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </cells>
+                            </tableViewSection>
                         </sections>
                         <connections>
                             <outlet property="dataSource" destination="umQ-0t-HR8" id="UHZ-2Q-I4o"/>
@@ -241,6 +280,7 @@
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="doneBarButton" destination="e5n-Jb-NuU" id="Jy0-a2-ZYt"/>
+                        <outlet property="iconImage" destination="9ki-l2-2Vu" id="clB-lK-eD8"/>
                         <outlet property="textField" destination="vz6-gH-Ocv" id="5OF-CB-S6V"/>
                     </connections>
                 </tableViewController>
@@ -248,11 +288,50 @@
             </objects>
             <point key="canvasLocation" x="-262" y="734"/>
         </scene>
+        <!--Choose Icon-->
+        <scene sceneID="a59-Tw-2Vi">
+            <objects>
+                <tableViewController id="VmN-sH-6lz" customClass="IconPickerViewController" customModule="Checklists" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" id="UBd-uS-q2O">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="IconCell" textLabel="bVX-Ei-NSO" style="IBUITableViewCellStyleDefault" id="11D-PM-mFw">
+                                <rect key="frame" x="0.0" y="44.5" width="414" height="43.5"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="11D-PM-mFw" id="EOU-7Z-xYz">
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="bVX-Ei-NSO">
+                                            <rect key="frame" x="20" y="0.0" width="374" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="VmN-sH-6lz" id="ecw-Kd-gYx"/>
+                            <outlet property="delegate" destination="VmN-sH-6lz" id="2Wn-Oz-NQS"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="Choose Icon" id="XF2-I0-H5a"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="8lp-ln-uPI" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="545" y="734"/>
+        </scene>
     </scenes>
     <inferredMetricsTieBreakers>
         <segue reference="2P3-Lr-CaV"/>
         <segue reference="7xv-nh-I31"/>
     </inferredMetricsTieBreakers>
+    <color key="tintColor" red="0.015686274509803921" green="0.66274509803921566" blue="0.92156862745098034" alpha="1" colorSpace="calibratedRGB"/>
     <resources>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
