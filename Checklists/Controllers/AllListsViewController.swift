@@ -15,11 +15,9 @@ class AllListsViewController: UITableViewController {
         
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-       
     }
     
-   
+    
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "ShowChecklist" {
@@ -66,11 +64,14 @@ class AllListsViewController: UITableViewController {
         let count = checklist.countUncheckedItems()
         
         if checklist.items.count == 0 {
+            cell.detailTextLabel!.font = UIFont.systemFont(ofSize: 12, weight: .light)
             cell.detailTextLabel!.text = "(No Items)"
         } else {
+            cell.detailTextLabel!.font = UIFont.systemFont(ofSize: 12, weight: .light)
             cell.detailTextLabel!.text = count == 0 ? "All Done!": "\(count) Remaining"
         }
         cell.imageView!.image = UIImage(named: checklist.iconName)
+        cell.textLabel!.font = UIFont.systemFont(ofSize: 17, weight: .light)
         cell.textLabel!.text = checklist.name
         cell.accessoryType = .detailDisclosureButton
         return cell

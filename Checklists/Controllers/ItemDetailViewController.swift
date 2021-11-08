@@ -6,6 +6,8 @@
 //
 
 import UIKit
+import UserNotifications
+
 
 protocol ItemDetailViewControllerDelegate: AnyObject {
     func itemDetailViewControllerDidCancel(_ controller: ItemDetailViewController)
@@ -18,14 +20,16 @@ class ItemDetailViewController: UITableViewController {
     weak var delegate: ItemDetailViewControllerDelegate?
     
     var itemToEdit: ChecklistItem?
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-      
+        
         if let itemToEdit = itemToEdit {
             title = "Edit Item"
             textField.text = itemToEdit.text
             doneBarButton.isEnabled = true
+            remindSwitch.isOn = itemToEdit.shouldRemind
+            datePicker.date = itemToEdit.dueDate
         }
     }
     
@@ -39,8 +43,9 @@ class ItemDetailViewController: UITableViewController {
     //MARK: - Outlets
     
     @IBOutlet weak var doneBarButton: UIBarButtonItem!
-    
     @IBOutlet weak var textField: UITextField!
+    @IBOutlet weak var remindSwitch: UISwitch!
+    @IBOutlet weak var datePicker: UIDatePicker!
     
     
     //MARK: - Actions
@@ -48,17 +53,38 @@ class ItemDetailViewController: UITableViewController {
     @IBAction func cancel() {
         delegate?.itemDetailViewControllerDidCancel(self)
     }
-   
+    
     @IBAction func done() {
         if let item = itemToEdit {
             item.text = textField.text!
+            
+            item.shouldRemind = remindSwitch.isOn
+            item.dueDate = datePicker.date
+            item.scheduleNotifications()
             delegate?.itemDetailViewController(self, didFinishEditing: item)
         } else {
-           let item = ChecklistItem()
+            let item = ChecklistItem()
             item.text = textField.text!
+            
+            item.shouldRemind = remindSwitch.isOn
+            item.dueDate = datePicker.date
             delegate?.itemDetailViewController(self, didFinishAdding: item)
         }
     }
+    
+    @IBAction func remindToggled(_ switchControl: UISwitch) {
+        textField.resignFirstResponder()
+        
+        if switchControl.isOn {
+            let center = UNUserNotificationCenter.current()
+            center.requestAuthorization(options: [.alert, .sound]) { _, _ in
+                //
+            }
+        }
+        
+    }
+    
+    
     
     //MARK: - TableView Delegate
     
