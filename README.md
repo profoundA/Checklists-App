@@ -1,5 +1,5 @@
 # Checklists-app
-Educational To-Do app
+Educational To-Do app.
 
 # Features
 - Plist data saving
