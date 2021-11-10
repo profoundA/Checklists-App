@@ -1,7 +1,7 @@
 # Checklists-app
 Educational To-Do app.
 
-# Features
+## Features
 - Plist data saving
 - UserDefaults
 - UserNotifications
